@@ -1,5 +1,5 @@
 """
-WSGI config for CoreBrowser project.
+WSGI config for CoreBrowser_config project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CoreBrowser.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CoreBrowser_config.settings')
 
 application = get_wsgi_application()
