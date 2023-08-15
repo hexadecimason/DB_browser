@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"path": "C:\\Users\\cull4193\\DB_browser"
+		}
+	],
+
+	"build_systems":
+	[
+		{
+			"name" : "Python: browser_env",
+			"cmd" : ["C:\\Users\\cull4193\\DB_browser\\.browser_env\\Scripts\\python", "-u", "$file"]
+		}	
+	]
+}
