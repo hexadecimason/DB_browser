@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+	<html lang="en">
+		
+		<head>
+			{% load static %}
+			<link rel="stylesheet" href="{% static 'style.css' %}">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		</head>
+
+		<br>
+
+		<body>
+
+			<h2>
+			Search Results
+			</h2>
+
+			{% for pair in resultlist %}
+
+				<section class="well_sec">
+
+				<p class="well">
+
+				{% with well=pair.0 %}
+
+					<b>File #: {{ well.file_num }} &nbsp&nbsp {{ well.api }}</b>
+
+					<br>
+
+					<b>{{ well.operator }} &nbsp&nbsp {{ well.well_num }} &nbsp&nbsp {{ well.lease }}</b>
+
+					<br>
+
+					{{ well.sec }}-{{ well.twn }}{{ well.twn_d }}-{{ well.rng }}{{ well.rng_d }} &nbsp&nbsp {{ well.qq }} &nbsp&nbsp
+
+					[{{ well.latitude }}, {{ well.longitude }}]
+
+					<br>
+
+					{{ well.county }}  County,  {{well.state}} &nbsp&nbsp&nbsp&nbsp ({{ well.field }} Field)
+
+				{% endwith %}
+
+				</p>
+
+				</section>
+
+				<table>
+
+					<colgroup>
+						<col width="7%"/> <!-- Box -->
+						<col width="20%" /> <!-- Depth -->
+						<col width="15%" /> <!-- Fm -->
+						<col width="7%" /> <!-- Dia -->
+						<col width="12%" /> <!-- Type -->
+						<col width="15%" /> <!-- Cond -->
+						<col width="10%" /> <!-- Rest -->
+
+					</colgroup>
+
+					<tr>
+						<th>Box #</th>
+						<th>Depths</th>
+						<th>Formation</th>
+						<th>Dia.</th>
+						<th>Type</th>
+						<th>Condition</th>
+						<th>Restrictions</th>
+					</tr>
+
+					{% with box_result=pair.1 %}
+						{% for box in box_result %}
+						<tr>
+							<td>
+							<span class="hover_comment" data="{{ box.comments }}">
+
+								{{ box.box_num }}
+
+							</span>
+							</td>
+
+							<td>{{ box.top }} - {{ box.bottom }}</td>
+							<td>{{ box.formation }}</td>
+							<td>{{ box.diameter }}"</td>
+							<td>{{ box.sample_type }}</td>
+							<td>{{ box.condition }}</td>
+							<td>{{ box.restrictions }}</td>
+						</tr>
+						{% endfor %}
+					{% endwith %}
+
+				</table>
+
+				<!--
+				<section class="boxes_sec">
+				<p class="boxes">
+				{% with box_result=pair.1 %}
+					{% for box in box_result %}
+
+						Box: <b>{{ box.box_num }} &nbsp&nbsp {{ box.top }} - {{ box.bottom }}</b> &nbsp&nbsp {{ box.formation }} Fm.
+
+						&nbsp&nbsp &nbsp&nbsp &nbsp&nbsp
+
+						{{ box.diameter }}" &nbsp&nbsp {{ box.sample_type }} &nbsp&nbsp {{ box.condition }} &nbsp&nbsp {{ box.restrinctions }}
+
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{ box.comments }}
+						<br>	
+					{% endfor %}
+					<br>
+				{% endwith %}
+				</p>
+				</section>
+				-->
+
+				<hr>
+
+			{% endfor %}
+
+			<form action="{% url 'CoreBrowser:index' %}">
+			<button type="submit">SEARCH AGAIN</button>
+			</form>
+
+		</body>
+
+		<br>
+
+	</html>

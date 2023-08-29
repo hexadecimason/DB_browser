@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+	<html lang="en">
+
+		<head>
+			{% load static %}
+			<link rel="stylesheet" href="{% static 'style.css' %}">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		</head>
+
+		<body class="opening_page">
+
+			<h2 style="width: 250px;">Browse OPIC Core</h2>
+
+			<br>
+
+			<form method="GET" action="{% url 'CoreBrowser:search' %}">
+				<fieldset>
+					<legend class="option_select">Search by:</legend>
+					<input required type="radio" name="search_type" id="FILE" value="FILE">FILE
+					<input required type="radio" name="search_type" id="API" value="API">API
+					<input required type="radio" name="search_type" id="LEASE" value="LEASE">LEASE
+					<input required type="radio" name="search_type" id="FORMATION" value="FORMATION">FM
+				</fieldset>
+
+				<br>
+
+				<input type="text" name="search_term" placeholder="Enter search term..." required>
+				<button type="submit">SEARCH</button>
+			</form>
+
+		</body>
+	</html>

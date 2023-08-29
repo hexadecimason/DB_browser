@@ -2,6 +2,11 @@
 
 # NOTE: BEFORE RUNNING THIS, USE "python manage.py flush" to clear tables.
 
+# create database
+# python manage.py makemigrations CoreBrowser - gneerates migration file
+# python manage.py migrate - executes migrations specified in migration file
+# pyhton manage.py sqlmigrate CoreBrowser %%%% - generates preview of SQL used to migrate
+
 import pandas as pd
 import numpy as np
 import django
@@ -14,7 +19,7 @@ django.setup()
 sys.path.append('../')
 from CoreBrowser.models import Well, Box
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand#, CommandError
 
 class Command(BaseCommand):
 
